@@ -28,26 +28,29 @@
 
 name = input('Введите Ваше имя: ')
 age = int(input('Введите Ваш возраст:'))
-user_output = f'Привет, {name}. Тебе {age} лет!'
+user_output = f'Привет, {name.capitalize()}. Тебе {age} лет!'
 
 if name:
-    if len(name) >= 3:
-        if not str.isspace(name):
+    if not str.isspace(name):
+        if len(name) >= 3:
             if age == 16 or age == 17:
-                user_output = f'Привет, {name}. Тебе {age} лет! Не забудь получить первый паспорт.'
+                user_output = f'Привет, {name.capitalize()}. Тебе {age} лет! Не забудь получить первый паспорт.'
             elif age == 25 or age == 26:
-                user_output = f'Привет, {name}. Тебе {age} лет! Не забудь заменить паспорт по достижению {age} лет.'
+                user_output = f'Привет, {name.capitalize()}. Тебе {age} лет! ' \
+                              f'Не забудь заменить паспорт по достижению {age} лет. '
             elif age == 45 or age == 46:
-                user_output = f'Привет, {name}. Тебе {age} лет! Не забудь второй ' \
+                user_output = f'Привет, {name.capitalize()}. Тебе {age} лет! Не забудь второй ' \
                     f'раз заменить паспорт по достижению {age} лет.'
+            elif age <= 0:
+                user_output = 'Возраст не может быть 0 или отрицательным числом'
             elif age < 14:
                 user_output = 'Минимальный возраст — 14 лет.'
             else:
-                user_output = f'Привет, {name}. Тебе {age} лет!'
+                user_output = f'Привет, {name.capitalize()}. Тебе {age} лет!'
         else:
-            user_output = 'Пустое имя (пробелы)'
+            user_output = 'В имени не может быть менее 3 символов.'
     else:
-        user_output = 'В имени не может быть менее 3 символов.'
+        user_output = 'Пустое имя (пробелы)'
 
 else:
     user_output = 'Пустое имя (Enter)'
