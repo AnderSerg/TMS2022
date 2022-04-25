@@ -5,7 +5,7 @@ whitespace = len(name.split())
 
 if not name:
     user_output += 'Пустое имя (Enter).'
-elif whitespace > 1:
+elif whitespace > 2:
     user_output += 'В имени не может быть больше одного пробела'
 elif str.isspace(name):
     user_output += 'Пустое имя (пробелы).'
