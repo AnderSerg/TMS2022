@@ -18,9 +18,6 @@
 #  - Нельзя использовать глобальные переменные.
 
 
-import re
-
-
 def validate_name(name: str) -> str:
     """
     Функция validate_name выполняет проверку введенного пользователем имени.
@@ -32,13 +29,12 @@ def validate_name(name: str) -> str:
     :param name: str
     :return: str
     """
-    spaces = re.findall(r' ', name)
     if not name:
         return 'Ошибка: Пустое имя (Enter).'
-    if len(spaces) > 1:
+    if name.count(' ') > 1:
         return 'Ошибка: В имени не может быть больше одного пробела'
     if str.isspace(name):
-        return 'Ошибка: Пустое имя (пробелы).'
+        return 'Ошибка: Пустое имя (пробел).'
     if len(name) < 3:
         return 'Ошибка: В имени не может быть менее 3 символов.'
     return ''
@@ -69,14 +65,12 @@ def validate_age_passport(age: int) -> str:
     :param age: int
     :return: str(passport_age)
     """
-    passport_age = ''
     if age == 16 or age == 17:
-        passport_age += f'Не забудь получить первый паспорт по достижению {age} лет.'
+        return f'Не забудь получить первый паспорт по достижению {age} лет.'
     if age == 25 or age == 26:
-        passport_age += f'Не забудь заменить паспорт по достижению {age} лет.'
+        return f'Не забудь заменить паспорт по достижению {age} лет.'
     if age == 45 or age == 46:
-        passport_age += f'Не забудь второй раз заменить паспорт по достижению {age} лет.'
-    return passport_age
+        return f'Не забудь второй раз заменить паспорт по достижению {age} лет.'
 
 
 def spaces_name(name: str) -> str:
@@ -87,7 +81,6 @@ def spaces_name(name: str) -> str:
     :return: str
     """
     name = name.strip()
-    name = re.sub(r"\s+", " ", name)
     return name
 
 
@@ -95,7 +88,7 @@ def main():
     """
     Функция main запускает в цикле пользовательский ввод name(имени) и age(возраста),
     пока не будут введены корректные данные.
-    Вызывает функиции проверок validate_name, validate_age, validate_age_passport.
+    Вызывает функции проверок validate_name, validate_age, validate_age_passport.
     Вызывает функцию spaces_name, которая очищает от пробелов.
     Если данные введены некорректно, выводит ошибку и просит ввести данные заново.
     Если все данные корректны, выводит приветствие с именем и возрастом
@@ -104,12 +97,19 @@ def main():
     while True:
         name = input('Введите Ваше имя: ')
         age = int(input('Введите Ваш возраст: '))
-        if validate_name(name) == '' and validate_age(age) == '':
-            user_output = f'Привет, {spaces_name(name).title()}. Тебе {age} лет! {validate_age_passport(age)}'
+
+        var_validate_name = validate_name(name)
+        var_validate_age = validate_age(age)
+        var_validate_age_passport = validate_age_passport(age)
+        var_spaces_name = spaces_name(name)
+
+        if var_validate_name == '' and var_validate_age == '':
+            user_output = f'Привет, {var_spaces_name.title()}. Тебе {age} лет! {var_validate_age_passport}'
             print(f'{user_output}')
             break
-        elif not validate_name(name) == '' or not validate_age(age) == '':
-            user_output = validate_name(name) + validate_age(age)
+
+        elif not var_validate_name == '' or not var_validate_age == '':
+            user_output = var_validate_name + var_validate_age
             print(f'{user_output}')
             continue
         return
