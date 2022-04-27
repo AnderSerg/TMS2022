@@ -62,6 +62,7 @@ def validate_age_passport(age: int) -> str:
     Выполняется проверка на возраст 16, 17, 25, 26, 45, 46,
     если возраст попадает в эти значения,
     то возвращает строку с предложением сменить паспорт.
+    Иначе возвращает пустую строку.
     :param age: int
     :return: str(passport_age)
     """
@@ -71,6 +72,7 @@ def validate_age_passport(age: int) -> str:
         return f'Не забудь заменить паспорт по достижению {age} лет.'
     if age == 45 or age == 46:
         return f'Не забудь второй раз заменить паспорт по достижению {age} лет.'
+    return ''
 
 
 def spaces_name(name: str) -> str:
