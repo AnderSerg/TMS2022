@@ -52,3 +52,17 @@ print()
 test_func()
 
 print()
+
+
+def var_digit():
+    a = input()
+    if a.isdigit():
+        if a < 0:
+            print(int(a), "Вы ввели отрицательное число")
+        elif type(a) == float:
+            print(int(a), "Вы ввели дробь")
+
+    print(int(a))
+
+
+var_digit()
