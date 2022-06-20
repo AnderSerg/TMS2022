@@ -2,13 +2,16 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
 def test_wiki_search_field():
     url = 'https://ru.wikipedia.org/wiki/'
     word = 'Автоматизация'
-    chrome = webdriver.Chrome(ChromeDriverManager().install())
+    # chrome = webdriver.Chrome(ChromeDriverManager().install())
+    chrome = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    chrome.maximize_window()
     chrome.get(url)
     time.sleep(3)
 
