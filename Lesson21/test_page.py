@@ -26,6 +26,7 @@ def test_wiki_search_field():
         # assert word == title, f"{title} is not eq {word}"
         url = 'https://demoqa.com/text-box'
         chrome.get(url)
+        chrome.fullscreen_window()
         search_input1 = chrome.find_element(By.ID, "userName")
         search_input1.send_keys("word")
         search_input2 = chrome.find_element(By.ID, "userEmail")
@@ -34,22 +35,20 @@ def test_wiki_search_field():
         search_input3.send_keys("asdasdasd")
         search_input4 = chrome.find_element(By.ID, "permanentAddress")
         search_input4.send_keys("Asdasd")
-        time.sleep(10)
+        time.sleep(5)
         search_button = chrome.find_element(By.ID, "submit")
         search_button.click()
 
-        check_input1 = chrome.find_element(By.CSS_SELECTOR, '[id=name][class=mb-1]')
-        assert check_input1 == search_input1
-        check_input2 = chrome.find_element(By.CSS_SELECTOR, '[id=email][class=mb-1]')
-        assert check_input2 == search_input2
-        check_input3 = chrome.find_element(By.CSS_SELECTOR, '[id=currentAddress][class=mb-1]')
-        assert check_input3 == search_input3
-        check_input4 = chrome.find_element(By.CSS_SELECTOR, '[id=permanentAddress][class=mb-1]')
-        assert check_input4 == search_input4
+        check_input1 = chrome.find_element(By.CSS_SELECTOR, '[id=name][class=mb-1]').text
+        assert check_input1 == 'Name:word'
+        check_input2 = chrome.find_element(By.CSS_SELECTOR, '[id=email][class=mb-1]').text
+        assert check_input2 == 'Email:asdasd@tut.by'
+        check_input3 = chrome.find_element(By.CSS_SELECTOR, '[id=currentAddress][class=mb-1]').text
+        assert check_input3 == 'Current Address :asdasdasd'
+        check_input4 = chrome.find_element(By.CSS_SELECTOR, '[id=permanentAddress][class=mb-1]').text
+        assert check_input4 == 'Permananet Address :Asdasd'
 
-        time.sleep(10)
-
-        time.sleep(50)
+        time.sleep(5)
 
     finally:
         chrome.quit()
