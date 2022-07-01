@@ -20,12 +20,11 @@ def test_wiki_search_field():
         button.click()
         time.sleep(5)
 
-        tab2 = chrome.current_window_handle
+        tab2 = chrome.window_handles[1]
         chrome.switch_to.window(tab2)
-        # new_window_text = chrome.find_element(By.XPATH, "//*[contains(text(),'New Window')]").text
-        # assert new_window_text == "New Window"
+        new_window_text = chrome.find_element(By.XPATH, '//h3[text()="New Window"]').text
+        assert new_window_text == "New Window"
 
-        chrome.switch_to.window(tab1)
         time.sleep(5)
 
     finally:

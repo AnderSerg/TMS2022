@@ -22,11 +22,11 @@ def test_wiki_search_field():
         src_jmeter.click()
         time.sleep(5)
 
-        tab2 = chrome.current_window_handle
+        tab2 = chrome.window_handles[1]
         chrome.switch_to.window(tab2)
-
-        # check = chrome.find_element(By.XPATH, "//h1[@class='entry-title']").text
-        # assert check == "Selenium Live Project: FREE Real Time Project for Practice"
+        time.sleep(10)
+        check = chrome.find_element(By.XPATH, "//h1[@class='entry-title']").text
+        assert check == "Selenium Live Project: FREE Real Time Project for Practice"
 
     finally:
         chrome.quit()
