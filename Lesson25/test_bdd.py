@@ -2,6 +2,7 @@ import pytest
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Constants
 
@@ -12,10 +13,10 @@ DUCKDUCKGO_HOME = 'https://duckduckgo.com/'
 
 @pytest.fixture
 def browser():
-    b = webdriver.Chrome('/Users/marinasmirnova/PycharmProjects/pytestProject/chromedriver')
-    b.implicitly_wait(10)
-    yield b
-    b.quit()
+    browser = webdriver.Chrome(ChromeDriverManager().install())
+    browser.implicitly_wait(10)
+    yield browser
+    browser.quit()
 
 
 def ddg_home(browser):
