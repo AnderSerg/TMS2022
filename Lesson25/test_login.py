@@ -10,17 +10,14 @@ def open_login_page():
     login_link.click()
 
 
-
 def test_login():
     global browser
     browser = webdriver.Chrome('./chromedriver')
     browser.implicitly_wait(5)
     link = "http://automationpractice.com/index.php"
 
-
     try:
         browser.get(link)
         open_login_page()
     finally:
         browser.quit()
-
