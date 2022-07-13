@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<catalog>
+        <book id="bk101">
+            <author>Gambardella, Matthew</author>
+            <title>XML Developer's Guide</title>
+            <genre>Computer</genre>
+            <price>44.95</price>
+            <publish_date>2000-10-11</publish_date>
+            <description>An in-depth look at creating applications
+            with XML.</description>
+        </book>
+        <book id="bk102">
+            <author>Ralls, Kim</author>
+            <title>Midnight Rain</title>
+            <genre>Fantasy</genre>
+            <price>5.95</price>
+            <publish_date>2000-12-16</publish_date>
+            <description>A former architect battles corporate zombies,
+            an evil sorceress, and her own childhood to become queen
+            of the world.</description>
+        </book>
+        <book id="bk103">
+            <author>Corets, Eva</author>
+            <title>Maeve Ascendant</title>
+            <genre>Fantasy</genre>
+            <price>7</price>
+            <publish_date>2001-11-17</publish_date>
+            <description>After the collapse of a nanotechnology
+            society in England, the young survivors lay the
+            foundation for a new society.</description>
+        </book>
+        <book id="bk104">
+            <author>Robert C. Martin</author>
+            <title>Clean Code</title>
+            <genre>Computer</genre>
+            <price>36.75</price>
+            <publish_date>2008-09-10</publish_date>
+            <description>Even bad code can function. But if code isn’t clean, 
+            it can bring a development organization to its knees.</description>
+        </book>
+        <book id="bk105">
+            <author>Zed A. Shaw</author>
+            <title>Learn Python 3 the Hard Way</title>
+            <genre>Computer</genre>
+            <price>17.89</price>
+            <publish_date>2017-07-07</publish_date>
+            <description>A Very Simple Introduction to the Terrifyingly Beautiful 
+            World of Computers and Code</description>
+        </book>
+</catalog>
