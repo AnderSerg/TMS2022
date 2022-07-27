@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
@@ -12,6 +13,7 @@ def calc(x):
     return str(math.log(abs(12 * math.sin(int(x)))))
 
 
+@allure.story("Test open wiki page")
 def test_wiki_search_field():
     chrome = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     try:
@@ -22,14 +24,18 @@ def test_wiki_search_field():
         var_x = chrome.find_element(By.ID, "input_value").text
         answer_x = calc(var_x)
         input_x = chrome.find_element(By.ID, "answer")
-        input_x.send_keys(answer_x)
+        with allure.step("Send Keys"):
+            input_x.send_keys(answer_x)
 
         checkbox = chrome.find_element(By.ID, "robotCheckbox")
-        checkbox.click()
+        with allure.step("click"):
+            checkbox.click()
         radio = chrome.find_element(By.ID, "robotsRule")
-        radio.click()
+        with allure.step("click"):
+            radio.click()
         button = chrome.find_element(By.CLASS_NAME, "btn.btn-default")
-        button.click()
+        with allure.step("click"):
+            button.click()
         time.sleep(5)
 
     finally:
